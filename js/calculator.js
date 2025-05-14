@@ -19,12 +19,14 @@ function operate(operator, num1, num2) {
 
 function handleEquation(arr) {
     if (arr.length >= 3) {
+        console.log(arr);
         arr[0] = operate(arr[1], arr[0], arr[2]);
         delete arr[1];
         delete arr[2];
         // filter out the undefineds
-        arr = arr.filter(i => !!i);
+        
     }
+    equationArray = arr.filter(i => !!i);
 }
 
 function displayEquation(arr) {
@@ -33,6 +35,14 @@ function displayEquation(arr) {
 
 function displayNumber(num) {
     numberDiv.textContent = num;
+}
+
+function smartParse(str) {
+    if (str.includes(".")) {
+        return parseFloat(str)
+    } else {
+        return parseInt(str);
+    }
 }
 
 function handleNumberInput(event) {
@@ -54,7 +64,27 @@ function handleNumberInput(event) {
 }
 
 function handleOperatorInput(event) {
-
+    const element = event.target;
+    // if (currentNumber === "0") {
+    //     return;
+    // }
+    if (element.textContent === "=") {
+        equationArray.push(smartParse(currentNumber));
+        handleEquation(equationArray);
+        currentNumber = `${equationArray[0] ? equationArray[0]:"0"}`;
+        equationArray = [];
+    } else {
+        // if ("+-/*^%x".includes(equationArray.at(-1))) {
+        //     equationArray.splice(-1, 1, element.textContent);
+        //     return;
+        // }
+        if (currentNumber === "") {
+            return;
+        }
+        equationArray.push(smartParse(currentNumber));
+        equationArray.push(element.textContent);
+        currentNumber = "";
+    }
 }
 
 function handleCalculator(event) {
