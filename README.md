@@ -5,3 +5,7 @@
 - very simple calculator 
 - plus,minus,division,multiplication, exponent and modulo operations supported
 - float also supported
+
+### Todo
+- ~~fix multiple decimals~~
+- add keyboard support
