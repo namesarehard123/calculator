@@ -23,7 +23,6 @@ function handleEquation(arr) {
         arr[0] = operate(arr[1], arr[0], arr[2]);
         delete arr[1];
         delete arr[2];
-        // filter out the undefineds
         
     }
     equationArray = arr.filter(i => !!i);
@@ -65,19 +64,13 @@ function handleNumberInput(event) {
 
 function handleOperatorInput(event) {
     const element = event.target;
-    // if (currentNumber === "0") {
-    //     return;
-    // }
+   
     if (element.textContent === "=") {
         equationArray.push(smartParse(currentNumber));
         handleEquation(equationArray);
         currentNumber = `${equationArray[0] ? equationArray[0]:"0"}`;
         equationArray = [];
     } else {
-        // if ("+-/*^%x".includes(equationArray.at(-1))) {
-        //     equationArray.splice(-1, 1, element.textContent);
-        //     return;
-        // }
         if (currentNumber === "") {
             return;
         }
