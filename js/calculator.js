@@ -19,7 +19,6 @@ function operate(operator, num1, num2) {
 
 function handleEquation(arr) {
     if (arr.length >= 3) {
-        console.log(arr);
         arr[0] = operate(arr[1], arr[0], arr[2]);
         delete arr[1];
         delete arr[2];
@@ -58,6 +57,9 @@ function handleNumberInput(event) {
     // number inputs
     if (currentNumber === "0") {
         currentNumber = "";
+    }
+    if (currentNumber.includes(".") && element.textContent === ".") {
+        return;
     }
     currentNumber += element.textContent;
 }
