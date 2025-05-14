@@ -6,4 +6,38 @@ html {
     box-sizing: inherit;
     margin: 0;
     padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 14px;
+    border-bottom: 2px solid lightgray;
+    
+}
+
+.footer {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border-top: 2px solid lightgray;
+}
+
+/* ------- main stuff */
+.main {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
