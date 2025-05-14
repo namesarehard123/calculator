@@ -36,11 +36,25 @@ function displayNumber(num) {
 }
 
 function handleNumberInput(event) {
+    const element = event.target;
+    if (element.textContent === "AC") {
+        equationArray = [];
+        currentNumber = "0";
+        return;
+    } else if (element.textContent === "<=") {
+        currentNumber = currentNumber.slice(0,-1);
+        return;
+    }
 
+    // number inputs
+    if (currentNumber === "0") {
+        currentNumber = "";
+    }
+    currentNumber += element.textContent;
 }
 
 function handleOperatorInput(event) {
-    
+
 }
 
 function handleCalculator(event) {
